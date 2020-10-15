@@ -21,12 +21,13 @@ $(document).ready(function () {
             method: "GET"
         }).then(function (response) {
             console.log(response); 
-            cityName.text(response.name)
+            cityName.text("City: " + response.name)
             temp.text(response.main.temp)
-            feelsLike.text(response.main.feelsLike)
+            feelsLike.text(response.main.feels_like)
             humidity.text(response.main.humidity)
-            wind.text(response.main.wind)
-            uv.text(response.main.uv) 
+            wind.text(response.wind.speed)
+            // uv.text(response.weather[0].icon) 
+            
 
 
             // Add city to search history
@@ -37,7 +38,19 @@ $(document).ready(function () {
             $("#search").val("");
             // renderHistory();
         })
+        $.ajax({
+            url: "https://api.openweathermap.org/data/2.5/forecast?q=" + citySearch + "&appid=7e5813874d0192f2d42018c690376afc",
+            method: "GET"
+        }).then(function (response) {
+            console.log("Five day", response); 
+            console.log(response.list[0].main.temp)
+            humidity.text(response.main.humidity)
+
+        })
     })
 })
 
+
+//  date, an icon representation of weather conditions, the temperature, and the humidity
+// http://api.openweathermap.org/data/2.5/forecast?q=Boston&appid=7e5813874d0192f2d42018c690376afc
 
