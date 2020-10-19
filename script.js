@@ -19,3 +19,30 @@ function getForecast(cityName) {
         var lon = response.city.coord["lon"];
 
         var queryUrl = "https://api.openweathermap.org/data/2.5/onecall?lat=" + lat + "&lon=" + lon + "&units=imperial&exclude=hourly,minutely,alert&appid=7e5813874d0192f2d42018c690376afc"
+        $.ajax({
+            url: queryUrl,
+            method: "GET"
+
+        }).then(function (response) {
+
+            console.log(response);
+            var date = new Date(response.current);
+
+
+            cityInfoEl.text(city[0].toUpperCase() + city.slice(1) + "");
+            tempEl.text("Temperature: " + response.current.temp + " F");
+            humidityEl.text("Humidity: " + response.current.humidity + "%");
+            windSpeedEl.text("Wind Speed: " + response.current.wind_speed + "MPH");
+            uvIndexEl.text("UV Index: " + response.current.uvi);
+
+        })
+    })
+}
+
+
+$(".searchBtn").on("click", function (event) {
+    event.preventDefault();
+    if ($(".search").val() != null) {
+        getForecast($(".search").val());
+    }
+})
