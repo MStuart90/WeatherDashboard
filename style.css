@@ -1,25 +1,24 @@
 header {
-    padding: 0.5%;
+    padding: 1.75%;
     font-size: 40px;
     text-align: center;
-    color: white;
-    background-color: black;
+    color: pink;
+    background-color: purple;
+    /* font-family: 'Piazzolla', serif; */
 };
 
 #searchBtn {
     border-radius: 20%;
-    background-color: blue;
+    background-color: grey;
     color: white;
 };
   
-.fas {
-    font-size: 20px;
-    transition: all .3s ease-in-out;
-};
 
 main {
     margin: 20%;
     padding: 20%;
+    font-family: 'Piazzolla', serif;
+    background-color: purple;
+    
 };
-
 
